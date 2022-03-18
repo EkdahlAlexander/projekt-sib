@@ -1,14 +1,27 @@
 <template>
 <div>
-    <h1>Statistik Sidan</h1>
+    <h1>Statistik</h1>
     <ul>
-        <li v-for="(form, index) in formList" :key="index">{{form.fullName}} - {{form.serialNumber}}</li>
+        <li v-for="(form, index) in formList" :key="index">{{form.fullName}} - {{form.serialNumber}} - {{form.productionOrder}} - {{form.comment}}</li>
     </ul>
+
+    <h2>Cloud Firestore Table</h2>
+    <table>
+      <thead>
+        <th>Serienummer</th>
+        <th>Namn</th>
+        <th>Produktionsorder</th>
+        <th>Kommentar</th>
+      </thead>
+
+      <tbody id="tbody1"></tbody>
+    </table>
+
 </div>
 </template>
 
 <script setup>
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot, querySnapshot } from "firebase/firestore";
 import {db} from '../boot/firebase'
 import {ref} from 'vue'
 const formRef = collection(db, 'forms');
@@ -20,8 +33,5 @@ onSnapshot(formRef,  (snapshot) => {
       formList.value.push(doc.data());
   });
 });
-
-
-
 
 </script>

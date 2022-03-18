@@ -1,15 +1,15 @@
 <template>
 <div>
-    <h1>Förmulär Sidan</h1>
-    <q-form ref="form" @submit.prevent="onSubmit" greedy>
+    <h1>Formulär</h1>
+    <q-form ref="form" @submit.prevent="onSubmit" @submit="alert1" greedy>
         <q-input
           no-error-icon
           hide-bottom-space
           v-model="serialNumber"
           bg-color="white"
           class="q-pa-none"
-          outlined          
-          :rules="[(v) => v.length > 0 || 'Inte en giltig serienummer']"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Serienummer"
         />
         <q-input
@@ -18,8 +18,8 @@
           v-model="fullName"
           bg-color="white"
           class="q-pa-none"
-          outlined          
-          :rules="[(v) => v.length > 0 || 'Inte en giltig namn']"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Namn"
         />
         <q-input
@@ -28,8 +28,8 @@
           v-model="productionOrder"
           bg-color="white"
           class="q-pa-none"
-          outlined          
-          :rules="[(v) => v.length > 0 || 'Inte en giltig produktionsorder']"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Produktionsorder"
         />
         <q-input
@@ -38,14 +38,14 @@
           v-model="comment"
           bg-color="white"
           class="q-pa-none"
-          outlined                    
+          outlined
           placeholder="Kommentar"
         />
         <div>
             <q-btn
                 type="submit"
                 color="green-5"
-                label="Återställ lösenord"
+                label="Registrera"
                 no-caps
                 class="full-width"
                 unelevated
@@ -58,7 +58,7 @@
 <script setup>
 import {ref} from 'vue'
 import {db} from '../boot/firebase'
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore";
 
 const serialNumber = ref("");
 const fullName = ref("");
@@ -69,20 +69,21 @@ const form = ref(null);
 const onSubmit = () => {
   if (form.value != null) {
     form.value.validate().then(async (success) => {
-      if (success) {          
+      if (success) {
         try {
             const formData = {
                 date: Date.now(),
                 serialNumber: serialNumber.value,
                 fullName: fullName.value,
-                comment: comment.value
+                comment: comment.value,
+                productionOrder: productionOrder.value
             }
-            
+
             const docRef = await addDoc(collection(db, "forms"), formData);
 
             console.log("Document written with ID: ", docRef.id);
 
-            
+
 
         } catch (err) {
           console.log(err)
@@ -91,5 +92,9 @@ const onSubmit = () => {
     });
   }
 };
+
+function alert1() {
+  alert("Formulär registrerat");
+}
 
 </script>
