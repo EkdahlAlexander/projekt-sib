@@ -15,16 +15,6 @@
         <q-input
           no-error-icon
           hide-bottom-space
-          v-model="fullName"
-          bg-color="white"
-          class="q-pa-none"
-          outlined
-          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
-          placeholder="Namn"
-        />
-        <q-input
-          no-error-icon
-          hide-bottom-space
           v-model="productionOrder"
           bg-color="white"
           class="q-pa-none"
@@ -35,12 +25,83 @@
         <q-input
           no-error-icon
           hide-bottom-space
+          v-model="kastAEB"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Kastmått A efter balansering"
+        />
+        <q-input
+          no-error-icon
+          hide-bottom-space
+          v-model="kastBEB"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Kastmått B efter balansering"
+        />
+        <q-input
+          no-error-icon
+          hide-bottom-space
+          v-model="kastCEB"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Kastmått C efter balansering"
+        />
+        <q-input
+          no-error-icon
+          hide-bottom-space
+          v-model="kastAES"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Kastmått A efter svarvning"
+        />
+        <q-input
+          no-error-icon
+          hide-bottom-space
+          v-model="kastBES"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Kastmått B efter svarvning"
+        />
+        <q-input
+          no-error-icon
+          hide-bottom-space
+          v-model="kastCES"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Kastmått C efter svarvning"
+        />
+        <q-input
+          no-error-icon
+          hide-bottom-space
           v-model="comment"
           bg-color="white"
           class="q-pa-none"
           outlined
           placeholder="Kommentar"
         />
+        <q-input
+          no-error-icon
+          hide-bottom-space
+          v-model="fullName"
+          bg-color="white"
+          class="q-pa-none"
+          outlined
+          :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
+          placeholder="Namn"
+        />
+        <q-date v-model="date"></q-date>
         <div>
             <q-btn
                 type="submit"
@@ -52,6 +113,7 @@
             />
         </div>
     </q-form>
+
 </div>
 </template>
 
@@ -65,6 +127,7 @@ const fullName = ref("");
 const productionOrder = ref("")
 const comment = ref("")
 const form = ref(null);
+const date = ref('2022/03/24')
 
 const onSubmit = () => {
   if (form.value != null) {
@@ -72,16 +135,19 @@ const onSubmit = () => {
       if (success) {
         try {
             const formData = {
-                date: Date.now(),
                 serialNumber: serialNumber.value,
                 fullName: fullName.value,
                 comment: comment.value,
-                productionOrder: productionOrder.value
+                productionOrder: productionOrder.value,
+                date: date.value
+
             }
 
             const docRef = await addDoc(collection(db, "forms"), formData);
 
             console.log("Document written with ID: ", docRef.id);
+
+            location.reload()
 
 
 
@@ -92,6 +158,7 @@ const onSubmit = () => {
     });
   }
 };
+
 
 function alert1() {
   alert("Formulär registrerat");

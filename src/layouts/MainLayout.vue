@@ -14,7 +14,7 @@
         <q-toolbar-title>
           Projekt SIB
         </q-toolbar-title>
-    
+
       </q-toolbar>
     </q-header>
 
@@ -50,12 +50,12 @@ import { ref } from 'vue'
 
 const linksList = [
   {
-    title: 'Förmulär',    
+    title: 'Formulär',
     icon: 'school',
     link: '/form'
   },
   {
-    title: 'Statistik',    
+    title: 'Statistik',
     icon: 'code',
     link: '/statistics'
   },
@@ -64,9 +64,9 @@ const linksList = [
 
 const leftDrawerOpen = ref(false)
 
-  
+
 const essentialLinks = ref(linksList)
-  
+
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }

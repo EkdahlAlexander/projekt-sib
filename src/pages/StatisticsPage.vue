@@ -2,20 +2,23 @@
 <div>
     <h1>Statistik</h1>
     <ul>
-        <li v-for="(form, index) in formList" :key="index">{{form.fullName}} - {{form.serialNumber}} - {{form.productionOrder}} - {{form.comment}}</li>
+        <li v-for="(form, index) in formList" :key="index">{{form.fullName}} - {{form.serialNumber}} - {{form.productionOrder}} - {{form.comment}} - {{form.date}}</li>
     </ul>
 
     <h2>Cloud Firestore Table</h2>
-    <table>
-      <thead>
-        <th>Serienummer</th>
-        <th>Namn</th>
-        <th>Produktionsorder</th>
-        <th>Kommentar</th>
-      </thead>
+    <div>
+      <table>
+        <thead>
+          <th>Serienummer</th>
+          <th>Namn</th>
+          <th>Produktionsorder</th>
+          <th>Kommentar</th>
+        </thead>
 
       <tbody id="tbody1"></tbody>
-    </table>
+      </table>
+    </div>
+
 
 </div>
 </template>
@@ -33,5 +36,7 @@ onSnapshot(formRef,  (snapshot) => {
       formList.value.push(doc.data());
   });
 });
+
+
 
 </script>
