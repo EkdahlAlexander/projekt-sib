@@ -8,6 +8,7 @@
           v-model="serialNumber"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Serienummer"
@@ -18,6 +19,7 @@
           v-model="productionOrder"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Produktionsorder"
@@ -28,6 +30,7 @@
           v-model="kastAEB"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Kastmått A efter balansering"
@@ -38,6 +41,7 @@
           v-model="kastBEB"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Kastmått B efter balansering"
@@ -48,6 +52,7 @@
           v-model="kastCEB"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Kastmått C efter balansering"
@@ -58,6 +63,7 @@
           v-model="kastAES"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Kastmått A efter svarvning"
@@ -68,6 +74,7 @@
           v-model="kastBES"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Kastmått B efter svarvning"
@@ -78,6 +85,7 @@
           v-model="kastCES"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Kastmått C efter svarvning"
@@ -88,6 +96,7 @@
           v-model="comment"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           placeholder="Kommentar"
         />
@@ -97,6 +106,7 @@
           v-model="fullName"
           bg-color="white"
           class="q-pa-none"
+          style="max-width: 300px"
           outlined
           :rules="[(v) => v.length > 0 || 'Obligatoriskt fält']"
           placeholder="Namn"
@@ -128,6 +138,12 @@ const productionOrder = ref("")
 const comment = ref("")
 const form = ref(null);
 const date = ref('2022/03/24')
+const kastAEB = ref("")
+const kastBEB = ref("")
+const kastCEB = ref("")
+const kastAES = ref("")
+const kastBES = ref("")
+const kastCES = ref("")
 
 const onSubmit = () => {
   if (form.value != null) {
@@ -139,7 +155,13 @@ const onSubmit = () => {
                 fullName: fullName.value,
                 comment: comment.value,
                 productionOrder: productionOrder.value,
-                date: date.value
+                date: date.value,
+                kastAEB: kastAEB.value,
+                kastBEB: kastBEB.value,
+                kastCEB: kastCEB.value,
+                kastAES: kastAES.value,
+                kastBES: kastBES.value,
+                kastCES: kastCES.value
 
             }
 

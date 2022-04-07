@@ -1,10 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+    <a href="https://imgur.com/KwEM9uR"><img src="https://i.imgur.com/KwEM9uR.jpg" title="source: imgur.com" /></a>
   </q-page>
 </template>
 

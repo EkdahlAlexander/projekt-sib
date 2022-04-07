@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { collection, doc, onSnapshot, querySnapshot } from "firebase/firestore";
+import { collection, doc, getDocs, onSnapshot, querySnapshot } from "firebase/firestore";
 import {db} from '../boot/firebase'
 import {ref} from 'vue'
 const formRef = collection(db, 'forms');
@@ -36,7 +36,5 @@ onSnapshot(formRef,  (snapshot) => {
       formList.value.push(doc.data());
   });
 });
-
-
 
 </script>

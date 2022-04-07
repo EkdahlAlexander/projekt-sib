@@ -51,12 +51,12 @@ import { ref } from 'vue'
 const linksList = [
   {
     title: 'Formulär',
-    icon: 'school',
+    icon: 'assignment',
     link: '/form'
   },
   {
     title: 'Statistik',
-    icon: 'code',
+    icon: 'search',
     link: '/statistics'
   },
 ];
