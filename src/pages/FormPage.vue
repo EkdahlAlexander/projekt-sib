@@ -113,8 +113,28 @@
         />
         <q-date v-model="date"></q-date>
 
+        <div style="height: 340px;" class="flex q-my-lg">
+          <circular-slider-component @slider-value="updateSliderValue1"></circular-slider-component>
+        </div>
+
+        <div style="height: 340px;" class="flex q-my-lg">
+          <circular-slider-component @slider-value="updateSliderValue2"></circular-slider-component>
+        </div>
+
+        <div style="height: 340px;" class="flex q-my-lg">
+          <circular-slider-component @slider-value="updateSliderValue3"></circular-slider-component>
+        </div>
+
         <div style="height: 340px;" class="flex flex-center q-my-lg">
-          <circular-slider-component @slider-value="updateSliderValue"></circular-slider-component>
+          <circular-slider-component @slider-value="updateSliderValue4"></circular-slider-component>
+        </div>
+
+        <div style="height: 340px;" class="flex flex-center q-my-lg">
+          <circular-slider-component @slider-value="updateSliderValue5"></circular-slider-component>
+        </div>
+
+        <div style="height: 340px;" class="flex flex-center q-my-lg">
+          <circular-slider-component @slider-value="updateSliderValue6"></circular-slider-component>
         </div>
 
         <div>
@@ -151,10 +171,35 @@ const kastCEB = ref("")
 const kastAES = ref("")
 const kastBES = ref("")
 const kastCES = ref("")
-const deviation = ref(0)
+const deviationAES = ref(0)
+const deviationBES = ref(0)
+const deviationCES = ref(0)
+const deviationAEB = ref(0)
+const deviationBEB = ref(0)
+const deviationCEB = ref(0)
 
-const updateSliderValue = (value) => {
-  deviation.value = value
+const updateSliderValue1 = (value) => {
+  deviationAES.value = value
+}
+
+const updateSliderValue2 = (value) => {
+  deviationBES.value = value
+}
+
+const updateSliderValue3 = (value) => {
+  deviationCES.value = value
+}
+
+const updateSliderValue4 = (value) => {
+  deviationAEB.value = value
+}
+
+const updateSliderValue5 = (value) => {
+  deviationBEB.value = value
+}
+
+const updateSliderValue6 = (value) => {
+  deviationCEB.value = value
 }
 
 const onSubmit = () => {
@@ -174,7 +219,13 @@ const onSubmit = () => {
                 kastAES: kastAES.value,
                 kastBES: kastBES.value,
                 kastCES: kastCES.value,
-                deviation: deviation.value
+                deviationAES: deviationAES.value,
+                deviationBES: deviationBES.value,
+                deviationCES: deviationCES.value,
+                deviationAEB: deviationAEB.value,
+                deviationBEB: deviationBEB.value,
+                deviationCEB: deviationCEB.value
+
 
             }
 

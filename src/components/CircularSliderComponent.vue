@@ -2,7 +2,7 @@
 <round-slider
     ref="slider1"
     v-bind:change="chgHandler"
-    radius="140"
+    radius="120"
     v-on:input="pInput"
     :create="onSliderCreate"
     min="0"
