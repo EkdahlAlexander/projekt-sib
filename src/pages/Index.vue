@@ -6,6 +6,7 @@
 
 <script>
 import { defineComponent } from 'vue';
+import CircularSliderComponent from '../components/CircularSliderComponent.vue'
 
 export default defineComponent({
   name: 'PageIndex'

@@ -112,6 +112,11 @@
           placeholder="Namn"
         />
         <q-date v-model="date"></q-date>
+
+        <div style="height: 340px;" class="flex flex-center q-my-lg">
+          <circular-slider-component @slider-value="updateSliderValue"></circular-slider-component>
+        </div>
+
         <div>
             <q-btn
                 type="submit"
@@ -121,6 +126,7 @@
                 class="full-width"
                 unelevated
             />
+
         </div>
     </q-form>
 
@@ -131,6 +137,7 @@
 import {ref} from 'vue'
 import {db} from '../boot/firebase'
 import { collection, addDoc } from "firebase/firestore";
+import CircularSliderComponent from 'src/components/CircularSliderComponent.vue'
 
 const serialNumber = ref("");
 const fullName = ref("");
@@ -144,6 +151,11 @@ const kastCEB = ref("")
 const kastAES = ref("")
 const kastBES = ref("")
 const kastCES = ref("")
+const deviation = ref(0)
+
+const updateSliderValue = (value) => {
+  deviation.value = value
+}
 
 const onSubmit = () => {
   if (form.value != null) {
@@ -161,7 +173,8 @@ const onSubmit = () => {
                 kastCEB: kastCEB.value,
                 kastAES: kastAES.value,
                 kastBES: kastBES.value,
-                kastCES: kastCES.value
+                kastCES: kastCES.value,
+                deviation: deviation.value
 
             }
 
