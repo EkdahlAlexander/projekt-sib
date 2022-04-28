@@ -2,10 +2,27 @@
 <div>
     <h1>Statistik</h1>
     <ul>
-        <li v-for="(form, index) in formList" :key="index">{{form.fullName}} - {{form.serialNumber}} - {{form.productionOrder}} - {{form.comment}} - {{form.date}}</li>
+        <li v-for="(form, index) in formList" :key="index">{{form.fullName}} -
+        {{form.serialNumber}} -
+        {{form.productionOrder}} -
+        {{form.comment}} -
+        {{form.date}} -
+        {{form.fullName}} -
+        {{form.kastAEB}} -
+        {{form.kastBEB}} -
+        {{form.kastCEB}} -
+        {{form.kastAES}} -
+        {{form.kastBES}} -
+        {{form.kastCES}} -
+        {{form.deviationAEB}} -
+        {{form.deviationBEB}} -
+        {{form.deviationCEB}} -
+        {{form.deviationAES}} -
+        {{form.deviationBES}} -
+        {{form.deviationCES}}
+        </li>
     </ul>
 
-    <h2>Cloud Firestore Table</h2>
     <div>
       <table>
         <thead>
